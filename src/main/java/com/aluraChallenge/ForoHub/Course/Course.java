@@ -24,7 +24,7 @@ public class Course {
     private Long id;
     @Column(unique = true)
     private String course_name;
-    @OneToMany(mappedBy = "courses", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Topic> topics;
     @ManyToMany(mappedBy = "courses")
