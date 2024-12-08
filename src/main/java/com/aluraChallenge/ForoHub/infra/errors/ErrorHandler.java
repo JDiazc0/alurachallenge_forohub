@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class ErrorHandler {
+    public record ErrorResponse(String error, String message){}
 
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity Error404Handler(){
-        return ResponseEntity.notFound().build();
+    public ResponseEntity Error404Handler(EntityNotFoundException e){
+        var errorResponse = new ErrorResponse("Resource not found", e.getMessage());
+        return ResponseEntity.status(404).body(errorResponse);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

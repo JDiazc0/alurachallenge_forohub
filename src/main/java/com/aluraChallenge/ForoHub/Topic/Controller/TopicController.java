@@ -33,9 +33,11 @@ public class TopicController {
     @PostMapping
     public void createTopic(@RequestBody @Valid TopicDTO topicDTO){
         User user = userRepository.findById(topicDTO.userId())
-                        .orElseThrow(EntityNotFoundException::new);
+                        .orElseThrow(()->new EntityNotFoundException(
+                                "User with Id " + topicDTO.userId() + " not found"));
         Course course = courseRepository.findById(topicDTO.courseId())
-                        .orElseThrow(EntityNotFoundException::new);
+                        .orElseThrow(()->new EntityNotFoundException(
+                                "Course with Id " + topicDTO.courseId() + " not found"));
         topicRepository.save(new Topic(topicDTO, user, course));
     }
 
