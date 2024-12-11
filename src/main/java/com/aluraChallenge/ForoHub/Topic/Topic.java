@@ -3,10 +3,12 @@ package com.aluraChallenge.ForoHub.Topic;
 import com.aluraChallenge.ForoHub.Comment.Comment;
 import com.aluraChallenge.ForoHub.Course.Course;
 import com.aluraChallenge.ForoHub.Topic.DTO.TopicDTO;
+import com.aluraChallenge.ForoHub.Topic.DTO.UpdateDataTopicDTO;
 import com.aluraChallenge.ForoHub.Topic.Resources.TopicStatus;
 import com.aluraChallenge.ForoHub.User.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -47,5 +49,18 @@ public class Topic {
         this.status = topicData.status();
         this.user = user;
         this.course = course;
+    }
+
+    public void updateData(UpdateDataTopicDTO updateDataTopicDTO) {
+        if(updateDataTopicDTO.title() != null){
+            this.title = updateDataTopicDTO.title();
+        }
+        if(updateDataTopicDTO.message() != null){
+            this.message = updateDataTopicDTO.message();
+        }
+    }
+
+    public void deactiveTopic() {
+        this.status = TopicStatus.INACTIVE;
     }
 }
