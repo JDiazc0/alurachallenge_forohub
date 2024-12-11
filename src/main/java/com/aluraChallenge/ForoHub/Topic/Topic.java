@@ -8,7 +8,6 @@ import com.aluraChallenge.ForoHub.Topic.Resources.TopicStatus;
 import com.aluraChallenge.ForoHub.User.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -60,7 +59,7 @@ public class Topic {
         }
     }
 
-    public void deactiveTopic() {
+    public void deactivateTopic() {
         this.status = TopicStatus.INACTIVE;
     }
 }
