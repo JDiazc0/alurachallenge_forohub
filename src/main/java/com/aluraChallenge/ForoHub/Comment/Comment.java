@@ -1,6 +1,7 @@
 package com.aluraChallenge.ForoHub.Comment;
 
 import com.aluraChallenge.ForoHub.Comment.DTO.CommentDTO;
+import com.aluraChallenge.ForoHub.Comment.DTO.UpdateDataCommentDTO;
 import com.aluraChallenge.ForoHub.Topic.Topic;
 import com.aluraChallenge.ForoHub.User.User;
 import jakarta.persistence.*;
@@ -33,4 +34,9 @@ public class Comment {
         this.topic = topic;
     }
 
+    public void updateData(UpdateDataCommentDTO updateDataCommentDTO) {
+        if(updateDataCommentDTO.text() != null){
+            this.text = updateDataCommentDTO.text();
+        }
+    }
 }
