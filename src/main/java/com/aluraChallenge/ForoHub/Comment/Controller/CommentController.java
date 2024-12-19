@@ -10,6 +10,7 @@ import com.aluraChallenge.ForoHub.Topic.Repository.TopicRepository;
 import com.aluraChallenge.ForoHub.Topic.Topic;
 import com.aluraChallenge.ForoHub.User.Repository.UserRepository;
 import com.aluraChallenge.ForoHub.User.User;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -23,6 +24,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/comments")
+@SecurityRequirement(name = "bearer-key")
 public class CommentController {
 
     private final TopicRepository topicRepository;

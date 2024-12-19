@@ -5,6 +5,7 @@ import com.aluraChallenge.ForoHub.Course.DTO.CourseDTO;
 import com.aluraChallenge.ForoHub.Course.DTO.CourseListDTO;
 import com.aluraChallenge.ForoHub.Course.DTO.CourseResponseDTO;
 import com.aluraChallenge.ForoHub.Course.Repository.CourseRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/courses")
+@SecurityRequirement(name = "bearer-key")
 public class CourseController {
 
     private final CourseRepository courseRepository;

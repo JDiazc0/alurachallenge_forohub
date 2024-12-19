@@ -11,6 +11,7 @@ import com.aluraChallenge.ForoHub.Topic.Resources.TopicStatus;
 import com.aluraChallenge.ForoHub.Topic.Topic;
 import com.aluraChallenge.ForoHub.User.Repository.UserRepository;
 import com.aluraChallenge.ForoHub.User.User;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -25,6 +26,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/topics")
+@SecurityRequirement(name = "bearer-key")
 public class TopicController {
 
     private final TopicRepository topicRepository;
